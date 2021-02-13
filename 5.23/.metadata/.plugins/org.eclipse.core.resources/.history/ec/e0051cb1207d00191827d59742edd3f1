@@ -1,0 +1,8 @@
+package com.java.Student;
+
+public class Teacher extends Person{
+public void printinfo(){
+		
+		System.out.println("我正在上"+course+"课,这门课非常有意思。");
+	}
+}

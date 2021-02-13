@@ -1,0 +1,54 @@
+package com.patgame;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class cattwo {
+	String catName;  //名称
+	String catStrain;  //类别
+	int catStrength = 100;  //体力值
+	int catMood = 20;  //心情值
+	int catLevel = 1;
+	int catExperience = 0;
+	
+	public void firstIntroduce() {
+		System.out.println("你好，亲爱的主人！初次见面，请多关照！");
+		System.out.println("我的名字是："+catName+"，是一只"+catStrain+"哦");
+		System.out.println("现在我的体力值为："+catStrength+"，心情值为："+catMood+"，目前等级为："+catLevel+",要好好照顾我哦");
+	}
+	
+	public void introduce() {
+		System.out.println("目前我的体力值为："+catStrength+"，心情值为："+catMood+"，目前等级为："+catLevel+",要继续好好照顾我哦");
+	}
+	
+	public void eat() throws InterruptedException {
+		if(catStrength>=120) {
+			System.out.println("我已经吃饱了，需要多运动了哦！");
+		}else {
+			catStrength+=20;
+			catExperience+=5;
+			catMood+=5;
+			Thread.currentThread();
+			Thread.sleep(3000);
+			System.out.println("吃完啦！");
+			System.out.println("体力值+20，心情值+5，经验值+5");
+			System.out.println("目前我的体力值为："+catStrength);
+		}
+	}
+	
+	public void play() throws InterruptedException {
+		if(catStrength<=30) {
+			System.out.print(catName+"生病了，快点跟我玩耍！");
+		}else {
+			catStrength-=10;
+			catMood+=5;
+			catExperience+=5;
+			System.out.println(catName+" 正在跟主人玩耍，心情变好！");
+			Thread.currentThread();
+			Thread.sleep(2000);
+			System.out.println("心情值+5，经验值+5，体力值-10");
+			System.out.println("目前我的心情值为："+catMood+"，体力值为："+catStrength);
+		}
+	}
+}
+	

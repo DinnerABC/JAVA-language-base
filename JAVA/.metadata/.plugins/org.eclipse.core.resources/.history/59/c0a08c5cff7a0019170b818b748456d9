@@ -1,0 +1,28 @@
+package com.patgame;
+
+public class NewCat {
+	public NewCat() {
+		
+	}
+	
+	Cat cat=new Cat();  //创建小猫类
+	
+	//System.out.println("请选择领养猫的种类：");
+	//System.out.println("（1）波斯猫 （2）挪威的森猫");
+
+	if(input.nextInt()==1) {
+		cat.setStrain("波斯猫");
+	}else {
+		cat.setStrain("挪威的森猫");
+	}
+	
+	System.out.println("请输入你要领养的宠物名称：");
+	cat.setName(input.next());
+	String answer="";   //退出时的提示接收
+	System.out.println("领养成功！");
+	
+	cat.firstIntroduce();  //第一次领养的提示语
+	
+	cat.autoReduce(); //自动减少体力，心情、增加等级
+}
+}

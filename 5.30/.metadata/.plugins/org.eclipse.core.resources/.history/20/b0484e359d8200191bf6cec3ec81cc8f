@@ -1,0 +1,5 @@
+package com.java.feedAnimal;
+
+public class Bone extends Food {
+
+}

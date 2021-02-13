@@ -1,0 +1,91 @@
+package com.patgame;
+
+import java.util.Scanner;
+
+public class StartGame {
+
+	public static void main(String[] args) {
+		Scanner input=new Scanner(System.in);
+		System.out.println("欢迎来到冷暖之家");
+		System.out.println("******************");
+		
+		System.out.println("请输入你要领养的宠物名称：");
+		String name = input.next();
+		
+		System.out.println("请输入你要领养的宠物类型：");
+		System.out.println("（1）小猫咪  （2）小猪猪");
+		switch(input.nextInt()) {
+			case 1:
+				System.out.println("请选择领养猫的种类：");
+				System.out.println("（1）波斯猫 （2）挪威的森猫");
+				String strain = null;
+				if(input.nextInt()==1) {
+					strain="波斯猫";
+				}else {
+					strain="挪威的森猫";
+				}
+				Cat cat=new Cat(name,strain);
+				String answer="";
+				System.out.println("领养成功！");
+				cat.firstIntroduce();
+				
+				do {
+					System.out.println("请输入您的操作：");
+					System.out.println("(1)查看宠物信息   (2)给宠物喂食  (3)陪宠物玩耍 （0）退出");
+				
+					int operation=input.nextInt();
+					if(operation==1) {
+						cat.introduce();
+					}else if(operation==2) {
+						cat.eat();
+					}else if(operation==3) {
+						cat.play();
+					}else if(operation==0) {
+						System.out.println("是否要退出冷暖之家？您的内容将会被删除。（yes/no）");
+						answer=input.next();
+					}else {
+						System.out.println("您的输入有误，请重新输入");
+					}
+						System.out.println("操作完成！");
+
+				}while(!answer.equalsIgnoreCase("yes"));
+				System.out.print("您已退出冷暖之家。");
+				break;
+				
+			case 2:
+				System.out.println("请选择领养猪的性别：");
+				System.out.println("（1）猪GG （2）猪MM");
+				String sex = "";
+				if(input.nextInt()==1) {
+					sex="GG";
+				}else {
+					sex="MM";
+				}
+				Pig pig=new Pig(name,sex);
+				answer="";
+				do {
+					System.out.println("请输入您的操作：");
+					System.out.println("(1)查看宠物信息   (2)给宠物喂食  (3)陪宠物玩耍 (0)退出");			
+					
+					int operation=input.nextInt();
+					if(operation==1) {
+						pig.introduce();
+					}else if(operation==2) {
+						pig.eat();
+					}else if(operation==3) {
+						pig.play();
+					}else if(operation==0) {
+						System.out.println("是否要退出冷暖之家？您的内容将会被删除。（yes/no）");
+						answer=input.next();
+					}else {
+						System.out.println("您的输入有误，请重新输入");
+					}
+					System.out.println("操作完成！");
+				}while(!answer.equalsIgnoreCase("yes"));
+				
+				System.out.print("您已退出冷暖之家。");
+				break;
+		}
+		input.close();
+	}
+}

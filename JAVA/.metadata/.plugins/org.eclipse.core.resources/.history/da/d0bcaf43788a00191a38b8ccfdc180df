@@ -1,0 +1,36 @@
+package zuidazhizuixiaozhi;
+
+
+import java.util.Scanner;
+
+public class zuidazhizuixiaozhi1 {
+
+	public static void main(String[] args) {
+		Scanner input=new Scanner(System.in);
+		int num[] = new int[10];
+		
+		System.out.println("请输入10个整数：");
+		for(int i=0;i<num.length;i++){
+			num[i]=input.nextInt();
+		}
+		
+		int max=num[0];
+		for(int i=0;i<num.length;i++){
+			if(max<num[i]){
+				max=num[i];
+			}
+		}
+		
+		int min=num[0];
+		for(int i=0;i<num.length;i++){
+			if(min>num[i]){
+				min=num[i];
+			}
+		}
+		
+		System.out.println("最大值是："+max);
+		System.out.print("最小值是："+min);
+		input.close();
+	}
+
+}

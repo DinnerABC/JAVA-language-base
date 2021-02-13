@@ -1,0 +1,52 @@
+package com.patgame;
+
+import java.util.Scanner;
+
+public class Operation {
+	private int op;
+	
+	public Operation(int op) {
+		this.op=op;
+	}
+	
+	public void OperationPat() throws InterruptedException {
+		String answer="";
+		Cat cat = new Cat();
+		Pig pig = new Pig();
+		Scanner input = new Scanner(System.in);
+		System.out.println("请输入您的操作：");
+		System.out.println("(1)查看宠物信息   (2)给宠物喂食  (3)陪宠物玩耍  (4)洗澡  (0)退出");
+		do {
+			int operation=input.nextInt();
+			if(operation==1) {
+				if(op==1) {
+					cat.introduce();
+				}else {
+					pig.introduce();
+				}
+			}else if(operation==2) {
+				if(op==1) {
+					cat.eat();
+				}else {
+					pig.eat();
+				}
+			}else if(operation==3) {
+				if(op==1) {
+					cat.play();
+				}else {
+					pig.play();
+				}
+				
+			}else if(operation==0) {
+				System.out.println("是否要退出冷暖之家？您的内容将会被删除。（yes/no）");
+				answer=input.next();
+			}else {
+			System.out.println("您的输入有误，请重新输入");
+			}
+			System.out.println("操作完成！");
+
+			}while(!answer.equalsIgnoreCase("yes"));
+			System.out.print("您已退出冷暖之家。");
+			input.close();
+		}
+}

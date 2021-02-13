@@ -1,0 +1,71 @@
+package com.patgame;
+
+public class Cat {
+	private String name;  //名称
+	private String strain;  //类别
+	private int strength = 100;  //体力值
+	private int mood = 20;  //心情值
+	
+	public Cat(String name,String strain) {
+		this.name=name;
+		this.strain=strain;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setStrain(String strain) {
+		this.strain = strain;
+	}
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+	public void setMood(int mood) {
+		this.mood = mood;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public String getStrain() {
+		return strain;
+	}
+	public int getStrength() {
+		return strength;
+	}
+	public int getMood() {
+		return mood;
+	}
+	
+	public void firstIntroduce() {
+		System.out.println("你好，我亲爱的主人！初次见面，请多关照！");
+		System.out.println("我的名字是："+this.name+"，是一只"+this.strain+"哦");
+		System.out.println("现在我的体力值为："+this.strength+"，心情值为："+this.mood+"要好好照顾我哦");
+	}
+	
+	public void introduce() {
+		System.out.println("目前我的体力值为："+this.strength+"，心情值为："+this.mood+"要继续好好照顾我哦");
+	}
+	
+	public void eat() {
+		if(strength>=120) {
+			System.out.println("我已经吃饱了，需要多运动了哦！");
+		}else {
+			strength+=10;
+			System.out.println("吃完啦，我增加了10体力值哦！");
+			System.out.println("目前我的体力值为："+strength);
+		}
+	}
+	
+	public void play() {
+		if(strength<=30) {
+			System.out.print(this.name+"生病了，快点跟我玩耍！");
+		}else {
+			strength-=10;
+			mood+=5;
+			System.out.println(this.name+"正在跟主人玩耍，心情变好！");
+			System.out.println("目前我的心情值为："+this.mood+"，体力值为："+this.strength);
+		}
+	}
+	
+}

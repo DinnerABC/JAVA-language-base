@@ -1,0 +1,9 @@
+package com.java.Student;
+
+public class Teacher extends Person{
+	private String major;
+	
+	public void printinfo(){
+		System.out.println("我能胜任"+major+"课,学生非常喜欢听。");
+	}
+}

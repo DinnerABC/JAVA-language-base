@@ -1,0 +1,30 @@
+package com.java.buyBook;
+
+import java.util.Scanner;
+
+public class BookShop {
+
+	public static void main(String[] args) {
+		Book books[]=new Book[3];
+		
+		outBooks(books);
+		Order order=purchase(books);
+		outOrder(order);
+	}
+	
+	public static Order purchase(Book books[]){
+		Order order=new Order("00001");
+		OrderItem item=null;
+		Scanner in=new Scanner(System.in);
+		for(int i=0;i<3;i++){
+			System.out.println("ÇëÊäÈëÍ¼Êé±àºÅÑ¡ÔñÍ¼Êé£º");
+			int cno=in.nextInt();
+			System.out.println("ÇëÊäÈë¹ºÂòÍ¼ÊéµÄÊýÁ¿£º");
+			int pnum=in.nextInt();
+			item=new OrderItem(books[cno-1], pnum);
+			order.setItem(item,i);
+			System.out.println("Çë¼ÌÐø¹ºÂòÍ¼Êé¡£");
+		}
+		return order;
+	}
+}

@@ -1,0 +1,163 @@
+package com.patgame;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Scanner;
+
+public class Cat {
+	private String name;  //名称
+	private String strain;  //类别
+	private int strength = 100;  //体力值
+	private int mood = 20;  //心情值
+	private int clear = 50;
+	private int level = 1;  //等级
+	private int experience = 0;  //经验值
+	
+	Scanner input = new Scanner(System.in);
+	
+	public Cat() {
+		
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setStrain(String strain) {
+		this.strain = strain;
+	}
+
+	public void firstIntroduce() {    //第一次领养介绍
+		System.out.println("你好，亲爱的主人！初次见面，请多关照！");
+		System.out.println("我的名字是："+this.name+"，是一只"+this.strain+"哦");
+		System.out.println("现在我的体力值为："+this.strength+"，心情值为："+this.mood+"清洁值为："+this.clear+"，目前等级为："+this.level+",要好好照顾我哦");
+	}
+	
+	public void introduce() {   //查询宠物信息
+		System.out.println("目前我的体力值为："+this.strength+"，心情值为："+this.mood+"，目前等级为："+this.level+",要继续好好照顾我哦");
+	}
+	
+	public void eat() throws InterruptedException {   //吃的加延时功能
+		if(strength>=120) {
+			System.out.println("我已经吃饱了，需要多运动了哦！");
+		}else {
+			strength+=20;
+			experience+=5;
+			mood+=5;
+			clear-=2;
+			Thread.currentThread();
+			System.out.println("正在喂食……");
+			Thread.sleep(3000);    //延时，体现正在吃
+			System.out.println("吃完啦！");
+			System.out.println("体力值+20，心情值+5，清洁值-2，经验值+5");
+			System.out.println("目前我的体力值为："+strength);
+		}
+	}
+	
+	public void play() throws InterruptedException {   //玩耍，延时功能
+		if(strength<=30) {
+			System.out.print(this.name+"生病了，快点跟我玩耍！");
+		}else {
+			strength-=10;
+			mood+=10;
+			experience+=5;
+			clear-=15;
+			System.out.println(this.name+" 正在跟主人玩耍，心情变好！");
+			Thread.currentThread();
+			Thread.sleep(2000);
+			System.out.println("心情值+10，经验值+5，清洁值-15，体力值-10");
+			System.out.println(this.name+"的心情值为："+this.mood+"，体力值为："+this.strength+"心情值为："+this.clear);
+		}
+	}
+	
+	public void clear() throws InterruptedException {
+		if(clear<=20) {
+			System.out.print(this.name+"现在好脏哦，想要洗澡了");
+		}else if(clear>=110) {
+			System.out.print(this.name+"现在干干净净，不需要洗澡了哦");
+		}else {
+			System.out.println("请选择洗澡用品：");
+			System.out.println("(1)飘柔护理洗发水  (2)舒肤佳香皂  (3)强生婴儿保湿霜");
+			int cleartool = input.nextInt();
+			int incorrect=0;
+			int moodvalue = 0;
+			do {	
+				switch(cleartool) {
+					case 1:
+						moodvalue=35;
+						mood+=moodvalue;
+						break;
+					case 2:
+						moodvalue=40;
+						mood+=moodvalue;
+						break;
+					case 3:
+						moodvalue=20;
+						mood+=moodvalue;
+						break;
+					default:
+						incorrect=1;
+						System.out.println("请重新输入！");
+				}
+			}while(incorrect==1);
+			strength-=5;
+			mood+=5;
+			experience+=10;
+
+			System.out.println(this.name+" 正在洗澡，变干净了哦！");
+			Thread.currentThread();
+			Thread.sleep(2000);
+			System.out.println("心情值+10，经验值+5，清洁值-"+moodvalue+"，体力值-10");
+			System.out.println(this.name+"的心情值为："+this.mood+"，体力值为："+this.strength+"清洁值为："+this.clear);
+		}
+	}
+	
+	public void Judge() {  //经验值裁判功能
+		int last=1;
+		
+		if(this.level<5 ) {  //1-5 50经验值升级
+			last=this.level;
+			while(this.experience>=50) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}else if(this.level>=5 && this.level<10) {  //5-10 100经验值升级
+			last=this.level;
+			while(this.experience>=100) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}else if(this.level>=10 && this.level<20 ) {  //10-20 150经验值升级
+			last=this.level;
+			while(this.experience>=150) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}else if(this.level>=20) {   //20级以上 200经验值升级
+			last=this.level;
+			while(this.experience>=200) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}
+		if(level>last) {
+			System.out.println("我升级啦！");
+			System.out.println(this.name+" 目前1的等级为："+this.level);
+		}
+	}
+	 
+	public void autoReduce() {   //计时器
+		Timer timer = new Timer();  
+        timer.scheduleAtFixedRate(new TimerTask() {  
+                public void run() {  
+                    strength-=5;
+                    mood-=2;
+                    experience+=2;
+                    Judge();   //调用经验值裁判，10s更新一次
+                }  
+        }, 1000 , 10000);   //从1秒开始，10秒循环一次，占用一个线程
+	}
+}

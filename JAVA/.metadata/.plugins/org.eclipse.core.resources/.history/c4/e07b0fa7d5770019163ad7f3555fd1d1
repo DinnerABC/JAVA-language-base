@@ -1,0 +1,68 @@
+package com.patgame;
+
+import java.util.jar.Attributes.Name;
+
+public class Pig {
+	private String name;  //名称
+	private String sex;  //性别
+	private int strength = 100;  //体力值
+	private int mood = 20;  //心情值
+	
+	public Pig(String name,String strain) {
+		this.name=name;
+		this.sex=sex;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setStrain(String strain) {
+		this.sex = sex;
+	}
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+	public void setMood(int mood) {
+		this.mood = mood;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public String getStrain() {
+		return sex;
+	}
+	public int getStrength() {
+		return strength;
+	}
+	public int getMood() {
+		return mood;
+	}
+	
+	public void introduce() {
+		System.out.println("我的名字是："+this.name+"，是一只可爱的猪"+this.sex+"哦！");
+		System.out.println("现在我的体力值为："+this.strength+"，心情值为："+this.mood+"要好好照顾我哦");
+	}
+	
+	public void eat() {
+		if(strength>=120) {
+			System.out.println("我已经吃饱了，需要多运动了哦！");
+		}else {
+			strength+=10;
+			System.out.println("吃完啦，我增加了10体力值哦！");
+			System.out.println("目前我的体力值为："+strength);
+		}
+	}
+	
+	public void play() {
+		if(strength<=30) {
+			System.out.print(this.name+"生病了，快点跟我玩耍！");
+		}else {
+			strength-=10;
+			mood+=5;
+			System.out.println(this.name+"正在跟主人玩耍，心情变好！");
+			System.out.println("目前我的心情值为："+this.mood+"，体力值为："+this.strength);
+		}
+	}
+	
+}

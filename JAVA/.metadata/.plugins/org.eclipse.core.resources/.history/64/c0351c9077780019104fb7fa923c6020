@@ -1,0 +1,58 @@
+package com.patgame;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class AutoRun {
+	cattwo cat = new cattwo();
+	public void Judge() {
+		int last=1;
+		
+		if(cat.catLevel<5 ) {
+			last=cat.catLevel;
+			while(cat.catExperience>=50) {
+				cat.catLevel++;
+				cat.catExperience=0;
+				break;
+			}
+		}else if(cat.catLevel>=5 && cat.catLevel<10) {
+			last=cat.catLevel;
+			while(cat.catExperience>=100) {
+				cat.catLevel++;
+				cat.catExperience=0;
+				break;
+			}
+		}else if(cat.catLevel>=10 && cat.catLevel<20 ) {
+			last=cat.catLevel;
+			while(cat.catExperience>=150) {
+				cat.catLevel++;
+				cat.catExperience=0;
+				break;
+			}
+		}else if(cat.catLevel>=20) {
+			last=cat.catLevel;
+			while(cat.catExperience>=200) {
+				cat.catLevel++;
+				cat.catExperience=0;
+				break;
+			}
+		}
+		if(cat.catLevel>last) {
+			System.out.println("我升级啦！");
+			System.out.println(cat.catName+" 目前的等级为："+cat.catLevel);
+		}
+	}
+	
+	public void autoReduce() {
+		Timer timer = new Timer();  
+        timer.scheduleAtFixedRate(new TimerTask() {  
+                public void run() {  
+                    cat.catStrength-=5;
+                    cat.catMood-=2;
+                    cat.catExperience+=2;
+                    System.out.println("      jinyan"+cat.catExperience);
+                    Judge();
+                }  
+        }, 1000 , 10000);   
+	}
+}

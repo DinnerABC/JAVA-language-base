@@ -1,0 +1,57 @@
+package com.patgame;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class AutoRun {
+	Cat cat=new Cat(name, string);
+	public void Judge() {
+		int last=1;
+		
+		if(this.level<5 ) {
+			last=this.level;
+			while(this.experience>=50) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}else if(this.level>=5 && this.level<10) {
+			last=this.level;
+			while(this.experience>=100) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}else if(this.level>=10 && this.level<20 ) {
+			last=this.level;
+			while(this.experience>=150) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}else if(this.level>=20) {
+			last=this.level;
+			while(this.experience>=200) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}
+		if(level>last) {
+			System.out.println("我升级啦！");
+			System.out.println(this.name+" 目前的等级为："+this.level);
+		}
+	}
+	
+	public void autoReduce() {
+		Timer timer = new Timer();  
+        timer.scheduleAtFixedRate(new TimerTask() {  
+                public void run() {  
+                    strength-=5;
+                    mood-=2;
+                    experience+=2;
+                    Judge();
+                }  
+        }, 1000 , 10000);   
+	}
+}

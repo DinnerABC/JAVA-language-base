@@ -1,0 +1,79 @@
+package com.patgame;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class JudgeSystem {
+	
+	private int level = 0;
+	private int experience = 0;
+	private String name;
+	private int strength;
+	private int mood;
+	private int clear;
+	
+	public int getStrength() {
+		return strength;
+	}
+	public int getMood() {
+		return mood;
+	}
+	public int getClear() {
+		return clear;
+	}
+	
+	public JudgeSystem(String name, int strength, int mood, int clear) {
+		
+	}
+	
+	public void Judge() {  //经验值裁判功能
+		int last=1;
+		
+		if(this.level<5 ) {  //1-5 50经验值升级
+			last=this.level;
+			while(this.experience>=50) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}else if(this.level>=5 && this.level<10) {  //5-10 100经验值升级
+			last=this.level;
+			while(this.experience>=100) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}else if(this.level>=10 && this.level<20 ) {  //10-20 150经验值升级
+			last=this.level;
+			while(this.experience>=150) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}else if(this.level>=20) {   //20级以上 200经验值升级
+			last=this.level;
+			while(this.experience>=200) {
+				this.level++;
+				this.experience=0;
+				break;
+			}
+		}
+		if(level>last) {
+			System.out.println("我升级啦！");
+			System.out.println(this.name+" 目前1的等级为："+this.level);
+		}
+	}
+	 
+	public void autoReduce() {   //计时器
+		Timer timer = new Timer();  
+        timer.scheduleAtFixedRate(new TimerTask() {  
+                public void run() {  
+                    strength-=5;
+                    mood-=2;
+                    clear-=5;
+                    experience+=2;
+                    Judge();   //调用经验值裁判，10s更新一次
+                }  
+        }, 1000 , 10000);   //从1秒开始，10秒循环一次，占用一个线程
+	}
+}

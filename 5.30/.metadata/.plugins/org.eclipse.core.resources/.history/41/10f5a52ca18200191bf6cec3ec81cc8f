@@ -1,0 +1,22 @@
+package com.java.company;
+
+public class Employee {
+	private String name;
+	private String no;
+	private double salary;
+	
+	public Employee(String name,String no){
+		this.name=name;
+		this.name=no;
+	}
+	
+	public void printInfo(){
+		System.out.println("–’√˚£∫"+name+"\n‘±π§∫≈£∫"+no);
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+}

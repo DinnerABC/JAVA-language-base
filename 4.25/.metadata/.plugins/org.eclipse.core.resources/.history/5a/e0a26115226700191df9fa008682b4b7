@@ -1,0 +1,21 @@
+public class yanghuisanjiao {
+
+	public static void main(String[] args) {
+		char[][] a=new char [3][];
+		a[0]=new char[1];
+		a[1]=new char[2];
+		a[2]=new char[3];
+		for(int i=0;i<3;i++){
+			for(int j=0;j<a[i].length;j++){
+				a[i][j]='*';
+			}	
+		}
+		for(int i=0;i<3;i++){
+			for(int j=0;j<a[i].length;j++){
+				System.out.print(a[i][j]+"  ");
+			}
+			System.out.println("");
+		}
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;com.patgame&apos; to &apos;r/src&apos;&#x0D;&#x0A;- Original project: &apos;PatGame&apos;&#x0D;&#x0A;- Destination element: &apos;r/src&apos;&#x0D;&#x0A;- Original element: &apos;PatGame/src/com.patgame&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=r/src" element1="/src&lt;com.patgame" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1558941009842" version="1.0"/>
+</session>
